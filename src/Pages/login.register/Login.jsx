@@ -2,8 +2,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import ThirdPartyLogin from "./3rd party login/ThirdPartyLogin";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProviders/AuthProvider";
+import axios from "axios";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
+  const { user } = useContext(AuthContext);
   // states
   const { signIn, setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -23,8 +26,8 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         setUser(loggedUser);
+        saveUser(loggedUser);
         navigate(from, { replace: true });
         setError("");
         setSuccess("Account login successful");

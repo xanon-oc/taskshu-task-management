@@ -18,10 +18,32 @@ const Header = () => {
             <img src={logo} className="w-10" alt="logo" />
           </span>
         </Link>
+        {!user?.email && (
+          <Link
+            to="/login"
+            className="flex items-center h-10 p-4 rounded-lg cursor-pointer bg-gray-200  gap-4 text-xs font-bold uppercase tracking-wide text-gray-500 "
+          >
+            <p>please login to use the tool</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </Link>
+        )}
         <div className="flex items-center justify-end gap-4">
           <nav
             aria-label="Site Nav"
-            className="flex gap-4 text-xs font-bold uppercase tracking-wide text-gray-500"
+            className="flex gap-4 text-xs font-bold uppercase tracking-wide text-gray-500 "
           >
             {user?.email && (
               <>

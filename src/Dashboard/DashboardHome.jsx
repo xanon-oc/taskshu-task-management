@@ -15,7 +15,7 @@ const DashboardHome = () => {
     ["pendingTask", user?.email],
     async () => {
       const res = await axios.get(
-        `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/pendingTask?email=${user?.email}`
+        `https://taskshu-task-management-server.vercel.app/pendingTask?email=${user?.email}`
       );
       return res.data;
     }
@@ -26,7 +26,7 @@ const DashboardHome = () => {
     ["workingTask", user?.email],
     async () => {
       const res = await axios.get(
-        `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/workingTask?email=${user?.email}`
+        `https://taskshu-task-management-server.vercel.app/workingTask/getTask?email=${user?.email}`
       );
       return res.data;
     }
@@ -38,7 +38,7 @@ const DashboardHome = () => {
     ["finishedTask", user?.email],
     async () => {
       const res = await axios.get(
-        `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/finishedTask?email=${user?.email}`
+        `https://taskshu-task-management-server.vercel.app/finishedTask/getFinishedTask?email=${user?.email}`
       );
       return res.data;
     }
@@ -69,7 +69,7 @@ const DashboardHome = () => {
           onClick={() => {
             axios
               .patch(
-                `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/status/pending/${id}`
+                `https://taskshu-task-management-server.vercel.app/status/pending/${id}`
               )
               .then((response) => {
                 if (response.status === 200) {
@@ -117,7 +117,7 @@ const DashboardHome = () => {
           onClick={() => {
             axios
               .patch(
-                `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/status/finished/${id}`
+                `https://taskshu-task-management-server.vercel.app/status/finished/${id}`
               )
               .then((response) => {
                 if (response.status === 200) {
@@ -165,7 +165,7 @@ const DashboardHome = () => {
           onClick={() => {
             axios
               .delete(
-                `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/deleteTask/${id}`
+                `https://taskshu-task-management-server.vercel.app/deleteTask/${id}`
               )
               .then((response) => {
                 if (response.status === 200) {

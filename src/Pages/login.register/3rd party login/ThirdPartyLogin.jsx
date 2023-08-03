@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../AuthProviders/AuthProvider";
+import { saveUser } from "../../../api/auth";
 const ThirdPartyLogin = () => {
   // context
   const { handleGoogleSignIn, setUser, handleGitHubSignIn } =
@@ -16,6 +17,7 @@ const ThirdPartyLogin = () => {
     handleGoogleSignIn()
       .then((result) => {
         const loggedUser = result.user;
+        saveUser(loggedUser);
         setUser(loggedUser);
         console.log(loggedUser);
         navigate(from, { replace: true });

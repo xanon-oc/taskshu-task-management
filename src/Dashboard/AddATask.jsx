@@ -37,7 +37,7 @@ const AddATask = () => {
         data.taskAddedDate = taskAddedDate;
         axios
           .post(
-            "https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/addNewTask",
+            "https://taskshu-task-management-server.vercel.app/addNewTask",
             data
           )
           .then((res) => {

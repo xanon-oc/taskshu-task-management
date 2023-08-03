@@ -1,16 +1,11 @@
-import { useContext } from "react";
-
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { AuthContext } from "../AuthProviders/AuthProvider";
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 
 const UpdateTask = () => {
-  const { user } = useContext(AuthContext);
   const data = useLoaderData();
   const id = data._id;
-
   const {
     register,
     handleSubmit,
@@ -24,7 +19,7 @@ const UpdateTask = () => {
     data.taskAddedDate = taskAddedDate;
     axios
       .patch(
-        `https://taskshu-task-management-server-dnyieasi5-xanon-oc.vercel.app/updateTask?id=${id}`,
+        `https://taskshu-task-management-server.vercel.app/updateTask?id=${id}`,
         data
       )
       .then((res) => {
@@ -48,7 +43,7 @@ const UpdateTask = () => {
             <span className="label-text">Task Name</span>
           </label>
           <input
-            value={data.taskName}
+            defaultValue={data.taskName}
             {...register("taskName")}
             type="text"
             placeholder="Type here"
